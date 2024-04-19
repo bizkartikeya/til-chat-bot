@@ -26,7 +26,7 @@ const InputBar = ({
           
             
             <button
-              className={`px-4 py-2 rounded-md text-xl font-semibold w-[20%] mr-2 flex items-center ease-in-out duration-500 ${
+              className={`px-4 py-2 rounded-md text-lg font-semibold w-[20%] mr-2 flex items-center justify-center overflow-clip ease-in-out duration-500 ${
                 filter === "Agriculture"
                   ? `bg-green-600 text-black`
                   : `bg-zinc-600 text-white`
@@ -36,7 +36,7 @@ const InputBar = ({
               <img
               src={filter === "Agriculture" ? agri:min}
               alt=""
-              className="h-10 w-10 ease-in-out duration-700"
+              className="h-8 w-8 ease-in-out duration-700"
               style={{fill:"white"}}
             />
               {filter}

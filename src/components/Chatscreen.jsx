@@ -18,7 +18,7 @@ const Chatscreen = () => {
   const [messages, setMessages] = useState([
     {
       query:
-        "I am H.Ai, your personal virtual assistant. How can I help you today?",
+        "I am DMS, your personal Document managing assistant. How can I help you today?",
       isBot: true,
       filter:'Agriculture',
       bgLeft:"bg-green-600",
