@@ -26,7 +26,7 @@ const InputBar = ({
           
             
             <button
-              className={`px-4 py-2 rounded-md text-lg font-semibold w-[20%] mr-2 flex items-center justify-center overflow-clip ease-in-out duration-500 ${
+              className={`px-4 py-2 rounded-md font-semibold w-[20%] mr-2 flex items-center justify-center overflow-clip ease-in-out duration-500 ${
                 filter === "Agriculture"
                   ? `bg-green-600 text-black`
                   : `bg-zinc-600 text-white`
