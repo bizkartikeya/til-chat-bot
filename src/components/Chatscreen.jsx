@@ -144,7 +144,7 @@ if(filter==="Agriculture"){
   return (
     <>
       <div className="flex">
-        <div className="w-1/2 chat_window_container h-[100svh] border-2 rounded-lg">
+        <div className="w-1/2 chat_window_container h-[100svh] border rounded-lg">
           <div className="chat_window h-[100%]">
             <MessagesHolder
               useMessage={useMessage}

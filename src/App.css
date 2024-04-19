@@ -1,7 +1,7 @@
 .chat_window_container{
-    min-height: calc(100vh - 85px);
-    max-height: calc(100vh - 85px);
-    height: calc(100vh - 85px);
+    min-height: calc(100vh - 55px);
+    max-height: calc(100vh - 55px);
+    height: calc(100vh - 55px);
     
   }
   
@@ -158,7 +158,7 @@
     }
     
     .text {
-      font-size: 18px;
+      font-size: 13px;
     }
     
   .bottom_wrapper {
