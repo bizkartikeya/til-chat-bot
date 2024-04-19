@@ -1,0 +1,203 @@
+.chat_window_container{
+    min-height: calc(100vh - 85px);
+    max-height: calc(100vh - 85px);
+    height: calc(100vh - 85px);
+    
+  }
+  
+  .chat_window {
+      border-radius: 10px;
+      width: 100%;
+     height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
+      margin: 5px;
+      /* border: 1.5px solid black; */
+      /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
+      overflow: hidden !important;
+      @media (max-width: 576px) {
+        display: flex;
+        flex-direction: column;
+        /* Styles for both classes */
+        height: 100svh;
+        width: 100%;
+        /* Add more styles here if needed */
+      }
+    }
+  
+  .typingIndicatorContainer {
+      display: flex;
+      position: relative;
+      padding-bottom: 5px;
+      height: 10%;
+   
+    }
+  
+    .typingIndicatorBubble {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 25px;
+      margin: 0px 8px;
+      background-color: #f0f1f1;
+      border-radius: 12px;
+    }
+    
+    .typingIndicatorBubbleDot {
+      width: 4px;
+      height: 4px;
+      margin-right: 4px;
+      background-color: #57585a;
+      border-radius: 50%;
+      animation-name: bounce;
+      animation-duration: 1.3s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    .typingIndicatorBubbleDot:first-of-type {
+      margin: 0px 4px;
+    }
+    
+    .typingIndicatorBubbleDot:nth-of-type(2) {
+      animation-delay: 0.15s;
+    }
+    
+    .typingIndicatorBubbleDot:nth-of-type(3) {
+      animation-delay: 0.3s;
+    }
+    
+    @keyframes bounce {
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-4px);
+      }
+    }
+    .spinner_P7sC {
+      transform-origin: center;
+      animation: spinner_svv2 0.75s infinite linear;
+    }
+    @keyframes spinner_svv2 {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    /*  */
+  
+ 
+  .messages {
+      position: relative;
+      list-style: none;
+      padding: 15px 10px 5px 10px;
+      width: 100%;
+      min-height: 90%;
+      max-height: 90%;
+      overflow-y: auto;
+      @media (max-width: 576px) {
+        /* padding: 5px 10px 0 10px; */
+        /* Styles for both classes */
+        height: 75%;
+        /* Add more styles here if needed */
+      }
+    }
+  
+    
+  .messages .message {
+      clear: both;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      transition: all 0.5s linear;
+    }
+    
+  .messages .message .timestamp {
+      font-size: 13px;
+      /* font-weight: 700; */
+      /* text-align: right; */
+      margin-top: 2px;
+    }
+    
+    .messages .message .text_wrapper {
+      display: inline-block;
+      padding: 10px;
+      /* min-width: 150px; */
+      max-width: 90%;
+      position: relative;
+    }
+  
+    
+  .messages .message.left .text_wrapper {
+      /* background-color: #a7a7a7; */
+      color: black;
+      /* margin-right: min(170px); */
+      border-radius: 0px 18px 18px 18px;
+    }
+    
+    .messages .message.left .timestamp {
+      color: black;
+      font-size: 8px;
+    }
+  
+    .messages .message.right .text_wrapper {
+      /* background-color: #373737; */
+      border-radius: 18px 0px 18px 18px;
+      color: white;
+      /* margin-right: 20px; */
+      float: right;
+      max-height: max-content !important;
+    }
+    
+    .messages .message.right .timestamp {
+      color: black;
+      font-size: 8px;
+    }
+    
+    .text {
+      font-size: 18px;
+    }
+    
+  .bottom_wrapper {
+      width: 100%;
+      /* padding: 10px; */
+      height: 100%;
+      max-height: 100%;
+      display: flex;
+      @media (max-width: 576px) {
+        /* Styles for both classes */
+        height: 9%;
+        /* Add more styles here if needed */
+      }
+    }
+    .sendButtonDiv {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      @media (max-width: 576px) {
+        /* Styles for both classes */
+        height: 100%;
+        width: 9%;
+        /* Add more styles here if needed */
+      }
+    }
+    
+    .bottom_wrapper #msg_input {
+      /* flex-grow: 1; */
+      width: 100%;
+      outline-width: 0;
+      height: 100%;
+      padding: 5px;
+      padding-right: 5%;
+      font-size: 18px;
+      border: 1px solid #bcbdc0;
+      /* border-radius: 10px; */
+      /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
+      /* margin-right: 15px; */
+    }
+      
