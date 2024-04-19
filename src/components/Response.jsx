@@ -10,7 +10,7 @@ const Response = ({message: { isBot, query,filter,bgLeft,bgRight, timestamp },se
         {/* <img src={isBot ? botimage : userimage} alt="Avatar" className="avatar" /> */}
         <div className={`text_wrapper`}>
         <div className='flex flex-row'>
-       {!isBot&& <div className={`rounded-[50%] p-2 flex justify-end m-2 w-[20%]`}>
+       {!isBot&& <div className={`rounded-[50%] p-2 flex justify-end m-2 min-w-[25%]`}>
         <img
               src={filter === "Agriculture" ? agri:min}
               alt=""
