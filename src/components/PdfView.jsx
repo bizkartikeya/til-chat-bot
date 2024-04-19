@@ -26,7 +26,7 @@ links.length>0?(
       links.map((link, index) => (
         <button
           key={index}
-          className={`border m-1 px-2 py-1 text-xs rounded-lg ${tabFilter==='Agriculture'?`bg-green-600 hover:bg-green-800`:`bg-zinc-400 hover:bg-zinc-600`} text-white`}
+          className={`border m-1 px-2 py-1 text-[10px] rounded-lg ${tabFilter==='Agriculture'?`bg-green-600 hover:bg-green-800`:`bg-zinc-400 hover:bg-zinc-600`} text-white`}
           onClick={() => handlePdfClick(index)}
         >
           <div>{link}</div>
