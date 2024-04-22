@@ -10,7 +10,7 @@ const Response = ({message: { isBot, query,filter,bgLeft,bgRight, timestamp },se
         {/* <img src={isBot ? botimage : userimage} alt="Avatar" className="avatar" /> */}
         <div className={`text_wrapper`}>
         <div className='flex flex-row'>
-       {!isBot&& <div className={`rounded-[50%] p-2 flex justify-end m-2 min-w-[25%]`}>
+       {!isBot&& <div className={`rounded-[50%] p-2 flex justify-end min-w-[25%]`}>
         <img
               src={filter === "Agriculture" ? agri:min}
               alt=""
@@ -21,7 +21,7 @@ const Response = ({message: { isBot, query,filter,bgLeft,bgRight, timestamp },se
           <div className={`messageContent w-[90%] rounded-2xl p-2 ${isBot?bgLeft:bgRight}`}>
             <div className={`text ${filter==='Agriculture'?(isBot?'text-black':'text-black'):(isBot?'text-black':'text-white')}`}>{query}</div>
           </div>
-       {isBot&& <div className={`rounded-[50%] flex justify-start w-[20%] p-2 m-2`}>
+       {isBot&& <div className={`rounded-[50%] flex justify-start w-[20%] p-2`}>
         <img
               src={filter === "Agriculture" ? agri:min}
               alt=""

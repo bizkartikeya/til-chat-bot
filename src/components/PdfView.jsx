@@ -20,13 +20,13 @@ const PdfView = ({ botResponse,pdflink,setPdfLink,tabFilter }) => {
 links.length>0?(
  <div className="h-[100%] flex flex-col">
    <div className="min-h-min-content max-h-[22%] overflow-hidden border rounded-lg p-2">
-  <p>Source File Name:</p>
+  <p className="text">Source File Name:</p>
   <div className="flex">
     {links.length > 0 ? ( // Check if links array has items
       links.map((link, index) => (
         <button
           key={index}
-          className={`border m-1 px-2 py-1 text-[10px] rounded-lg ${tabFilter==='Agriculture'?`bg-green-600 hover:bg-green-800`:`bg-zinc-400 hover:bg-zinc-600`} text-white`}
+          className={`border m-1 px-2 py-1 text-[10px] rounded-lg ease-in-out duration-500 ${tabFilter==='Agriculture'?`bg-green-600 hover:bg-green-800`:`bg-zinc-400 hover:bg-zinc-600`} text-white`}
           onClick={() => handlePdfClick(index)}
         >
           <div>{link}</div>
@@ -39,19 +39,19 @@ links.length>0?(
 </div>
 <div className="h-[77%] w-[100%] mt-2 border rounded-lg p-2">
   <div className="flex flex-col h-[100%]">
-    <div className="h-[13%]">
+    <div className="h-[13%] text">
       <p>Source Pages: </p>
       {sourcePage}
       <p></p>
     </div>
-    <div className="h-[87%]">
+    <div className="h-[87%] ease-in-out duration-700">
       {pdflink !== "" ? (
         <embed
           src={`data:application/pdf;base64,${pdflink}`}
           type="application/pdf"
           width="100%"
           height="100%"
-          className="shadow-md"
+          className="shadow-md ease-in-out duration-1000"
         />
       ) : (
         <p>Click on PDF name to display PDF</p>

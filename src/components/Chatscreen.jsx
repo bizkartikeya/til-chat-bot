@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MessagesHolder from "./MessagesHolder";
 import InputBar from "./InputBar";
 import PdfView from "./PdfView";
@@ -6,10 +6,11 @@ import PdfView from "./PdfView";
 const Chatscreen = () => {
   const baseURL = "http://127.0.0.1:8000/chat/";
   const [inputBox, setInputBox] = useState(true);
+  const messagesEndRef = useRef(null);
   const [filter, setFilter] = useState("Agriculture");
   const [botResponse, setBotResponse] = useState("Agriculture");
   const [pdflink, setPdfLink] = useState("");
-  const [tabFilter,setTabFilter]=useState("")
+  const [tabFilter, setTabFilter] = useState("");
   const [useMessage, setUseMessage] = useState({
     input: true,
     spin: false,
@@ -20,9 +21,9 @@ const Chatscreen = () => {
       query:
         "I am DMS, your personal Document managing assistant. How can I help you today?",
       isBot: true,
-      filter:'Agriculture',
-      bgLeft:"bg-green-600",
-      bgRight:"bg-green-500",
+      filter: "Agriculture",
+      bgLeft: "bg-green-600",
+      bgRight: "bg-green-500",
       timestamp: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -30,24 +31,30 @@ const Chatscreen = () => {
       }),
     },
   ]);
+
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
     setUseMessage({ input: true, spin: false });
   };
 
   const handleSendButtonClick = () => {
-    setBotResponse("")
-    setPdfLink("")
+    setBotResponse("");
+    setPdfLink("");
     console.log("Input", inputValue);
-    if(filter==='Agriculture'){
+    if (filter === "Agriculture") {
       setMessages((prevMessages) => [
         ...prevMessages,
         {
           query: inputValue,
           isBot: false,
-          filter:"Agriculture",
-          bgLeft:"bg-green-600",
-      bgRight:"bg-green-500",
+          filter: "Agriculture",
+          bgLeft: "bg-green-600",
+          bgRight: "bg-green-500",
           timestamp: new Date().toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
@@ -55,15 +62,15 @@ const Chatscreen = () => {
           }),
         },
       ]);
-    }else{
+    } else {
       setMessages((prevMessages) => [
         ...prevMessages,
         {
           query: inputValue,
           isBot: false,
-          filter:"Minerals",
-          bgLeft:"bg-zinc-400",
-      bgRight:"bg-zinc-600",
+          filter: "Minerals",
+          bgLeft: "bg-zinc-400",
+          bgRight: "bg-zinc-600",
           timestamp: new Date().toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
@@ -72,7 +79,7 @@ const Chatscreen = () => {
         },
       ]);
     }
-    
+
     setInputValue("");
     handleApiResponse();
   };
@@ -88,7 +95,7 @@ const Chatscreen = () => {
     };
 
     let bodyContent = JSON.stringify({
-      field:filter,
+      field: filter,
       question: inputValue,
     });
 
@@ -101,41 +108,41 @@ const Chatscreen = () => {
     let data = await response.json();
     console.log("ask", data);
     console.log("ask", data.bot_response);
-setBotResponse(data)
-if(filter==="Agriculture"){
-  setMessages((prevMessages) => [
-    ...prevMessages,
-    {
-      query: data.bot_response,
-      isBot: true,
-      filter:"Agriculture",
-      bgLeft:"bg-green-600",
-      bgRight:"bg-green-500",
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      }),
-    },
-  ]);
-}else{
-  setMessages((prevMessages) => [
-    ...prevMessages,
-    {
-      query: data.bot_response,
-      isBot: true,
-      filter:"Minerals",
-      bgLeft:"bg-zinc-400",
-      bgRight:"bg-zinc-600",
-      timestamp: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      }),
-    },
-  ]);
-}
-    
+    setBotResponse(data);
+    if (filter === "Agriculture") {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          query: data.bot_response,
+          isBot: true,
+          filter: "Agriculture",
+          bgLeft: "bg-green-600",
+          bgRight: "bg-green-500",
+          timestamp: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          }),
+        },
+      ]);
+    } else {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          query: data.bot_response,
+          isBot: true,
+          filter: "Minerals",
+          bgLeft: "bg-zinc-400",
+          bgRight: "bg-zinc-600",
+          timestamp: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          }),
+        },
+      ]);
+    }
+
     setUseMessage({
       input: true,
       spin: false,
@@ -148,27 +155,30 @@ if(filter==="Agriculture"){
           <div className="chat_window h-[100%]">
             <MessagesHolder
               useMessage={useMessage}
-              baseURL={baseURL}
               setTabFilter={setTabFilter}
               messages={messages}
-              setMessages={setMessages}
+              messagesEndRef={messagesEndRef}
             />
             <div className="h-[15%]">
-
-            <InputBar
-              handleInputChange={handleInputChange}
-              inputBox={inputBox}
-              filter={filter}
-              setFilter={setFilter}
-              inputValue={inputValue}
-              useMessage={useMessage}
-              handleSendButtonClick={handleSendButtonClick}
-            />
+              <InputBar
+                handleInputChange={handleInputChange}
+                inputBox={inputBox}
+                filter={filter}
+                setFilter={setFilter}
+                inputValue={inputValue}
+                useMessage={useMessage}
+                handleSendButtonClick={handleSendButtonClick}
+              />
             </div>
           </div>
         </div>
         <div className="w-1/2">
-          <PdfView botResponse={botResponse} tabFilter={tabFilter} pdflink={pdflink} setPdfLink={setPdfLink} />
+          <PdfView
+            botResponse={botResponse}
+            tabFilter={tabFilter}
+            pdflink={pdflink}
+            setPdfLink={setPdfLink}
+          />
         </div>
       </div>
     </>
